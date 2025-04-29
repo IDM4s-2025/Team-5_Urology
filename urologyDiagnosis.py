@@ -50,3 +50,24 @@ class UrologyDiagnosis(KnowledgeEngine):
         gender = input(" (male/female): ").lower()
         self.declare(Fact(gender=gender))
         self.declare(Fact(action="symptoms"))
+
+    """Ofelia"""
+    @Rule(Fact(action='symptoms'))
+    def symptoms(self):
+        """Now we are gonna do a little test about symptoms."""
+        print(f"\n Alright {self.user_name}, now I'll ask you about some of your symptoms one by one.")
+        symptoms = {}
+        symptoms['pain_urination'] = input(" Do you experience pain during urination? (yes/no) ").lower()
+        symptoms['blood_in_urine'] = input(" Do you see blood in your urine? (yes/no) ").lower()
+        symptoms['frequent_urination'] = input(" Do you urinate more often than usual? (yes/no) ").lower()
+        symptoms['fever'] = input(" Do you have fever? (yes/no) ").lower()
+        symptoms['lower_back_pain'] = input(" Do you feel lower back pain? (yes/no) ").lower()
+        symptoms['d_start_urine'] = input(" Difficulty starting urination? (yes/no) ").lower()
+        symptoms['weak_urine_stream'] = input(" Weak or interrupted urine stream? (yes/no) ").lower()
+        symptoms['testicular_swelling'] = input(" Any swelling in the testicle area? (yes/no) ").lower()
+        symptoms['pain_ejaculation'] = input(" Pain during ejaculation? (yes/no) ").lower()
+        symptoms['pelvic_pain'] = input(" Pelvic or bladder pain? (yes/no) ").lower()
+
+        for key, value in symptoms.items():
+            self.declare(Fact(**{key: value}))
+        self.declare(Fact(action="diagnose"))
