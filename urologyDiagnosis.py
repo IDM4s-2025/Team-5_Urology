@@ -121,3 +121,19 @@ class UrologyDiagnosis(KnowledgeEngine):
         """Diagnosis: Epididymitis
         sibyla."""
         self.diagnoses.append("- Epididymitis [Mayo Clinic - Epididymitis]")
+
+    @Rule(Fact(action='diagnose'),
+          Fact(lower_back_pain="yes"),
+          Fact(fever="yes"),
+          Fact(blood_in_urine="yes"))
+    def diagnose_pyelonephritis(self):
+        """Diagnosis: Pyelonephritis."""
+        self.diagnoses.append("- Kidney Infection (Pyelonephritis) [Mayo Clinic - Pyelonephritis]")
+
+    @Rule(Fact(action='diagnose'),
+          Fact(pelvic_pain="yes"),
+          Fact(frequent_urination="yes"),
+          Fact(pain_urination="yes"))
+    def diagnose_interstitialc(self):
+        """Diagnosis: Interstitial Cystitis."""
+        self.diagnoses.append("- Interstitial Cystitis [NHS - Interstitial Cystitis]")
