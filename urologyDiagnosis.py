@@ -145,3 +145,46 @@ class UrologyDiagnosis(KnowledgeEngine):
     def diagnose_prostatitis(self):
         """Diagnosis: Prostatitis."""
         self.diagnoses.append("- Prostatitis [NHS - Prostatitis]")
+
+
+    """Armando"""    
+    @Rule(Fact(action='diagnose'),
+          Fact(frequent_urination="yes"),
+          Fact(blood_in_urine="yes"),
+          Fact(pelvic_pain="yes"))
+    def diagnose_renalc(self):
+        """Diagnosis: Renal Cancer."""
+        self.diagnoses.append("- Renal Cancer [Mayo clinic - Kidney Cancer]")
+
+    @Rule(Fact(action='diagnose'),
+          Fact(lower_back_pain="yes"),
+          Fact(weak_urine_stream="yes"))
+    def diagnose_neurogenicb(self):
+        """Diagnosis: Neurogenic Bladder."""
+        self.diagnoses.append("- Neurogenic Bladder Disorder [NHS- Neurogenic Bladder]")
+
+    @Rule(Fact(action='diagnose'),
+          Fact(testicular_swelling="yes"),
+          Fact(pain_ejaculation="yes"))
+    def diagnose_varicocele(self):
+        """Diagnosis: Varicocele."""
+        self.diagnoses.append("- Varicocele [Mayo Clinic - Varicocele]")
+
+    @Rule(Fact(action='diagnose'),
+          salience=-10)
+    def show_diagnoses(self):
+        """Show all diagnoses after the test."""
+        if self.diagnoses:
+            print(f"\n Ok {self.user_name}, based on your symptoms, here are the possible diagnoses:")
+            for d in self.diagnoses:
+                print(d)
+        else:
+            print(f"\n {self.user_name}, you don't seem to be presenting symptoms for the conditions evaluated. Keep going.")
+
+        print("\n Please consult a healthcare professional for a more detailed evaluation.")
+        self.halt()
+
+# Run the engine
+engine = UrologyDiagnosis()
+engine.reset()
+engine.run()
