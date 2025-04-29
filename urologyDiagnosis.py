@@ -71,3 +71,28 @@ class UrologyDiagnosis(KnowledgeEngine):
         for key, value in symptoms.items():
             self.declare(Fact(**{key: value}))
         self.declare(Fact(action="diagnose"))
+
+    """Helena"""
+    @Rule(Fact(action='diagnose'),
+          Fact(pain_urination="yes"),
+          Fact(fever="yes"),
+          Fact(blood_in_urine="no"))
+    def diagnose_uti(self):
+        """Diagnosis: UTI."""
+        self.diagnoses.append("- Urinary Tract Infection (UTI) [NHS: UTI]")
+
+    @Rule(Fact(action='diagnose'),
+          Fact(pain_urination="yes"),
+          Fact(blood_in_urine="yes"),
+          Fact(lower_back_pain="yes"))
+    def diagnose_kstones(self):
+        """Diagnosis: Kidney Stones."""
+        self.diagnoses.append("- Kidney Stones [Mayo Clinic - Kidney Stones]")
+
+    @Rule(Fact(action='diagnose'),
+          Fact(frequent_urination="yes"),
+          Fact(weak_urine_stream="yes"),
+          Fact(d_start_urine="yes"))
+    def diagnose_bph(self):
+        """Diagnosis: BPH."""
+        self.diagnoses.append("- Benign Prostatic Hyperplasia (BPH) [Mayo Clinic - BPH]")
