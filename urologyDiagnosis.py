@@ -137,3 +137,11 @@ class UrologyDiagnosis(KnowledgeEngine):
     def diagnose_interstitialc(self):
         """Diagnosis: Interstitial Cystitis."""
         self.diagnoses.append("- Interstitial Cystitis [NHS - Interstitial Cystitis]")
+
+    """Helena"""
+    @Rule(Fact(action='diagnose'),
+          Fact(pain_ejaculation="yes"),
+          Fact(pain_urination="yes"))
+    def diagnose_prostatitis(self):
+        """Diagnosis: Prostatitis."""
+        self.diagnoses.append("- Prostatitis [NHS - Prostatitis]")
