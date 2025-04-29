@@ -96,3 +96,28 @@ class UrologyDiagnosis(KnowledgeEngine):
     def diagnose_bph(self):
         """Diagnosis: BPH."""
         self.diagnoses.append("- Benign Prostatic Hyperplasia (BPH) [Mayo Clinic - BPH]")
+
+    @Rule(Fact(action='diagnose'),
+          Fact(blood_in_urine="yes"),
+          Fact(pelvic_pain="yes"),
+          Fact(fever="no"))
+    def diagnose_bladderc(self):
+        """Diagnosis: Bladder Cancer.
+        sibyla"""
+        self.diagnoses.append("- Bladder Cancer [Mayo clinic - Bladder Cancer]")
+
+    @Rule(Fact(action='diagnose'),
+          Fact(testicular_swelling="yes"),
+          Fact(fever="no"))
+    def diagnose_hydrocele(self):
+        """Diagnosis: Hydrocele.
+        sibyla"""
+        self.diagnoses.append("- Hydrocele [Mayo Clinic - Hydrocele]")
+
+    @Rule(Fact(action='diagnose'),
+          Fact(testicular_swelling="yes"),
+          Fact(fever="yes"))
+    def diagnose_epididymitis(self):
+        """Diagnosis: Epididymitis
+        sibyla."""
+        self.diagnoses.append("- Epididymitis [Mayo Clinic - Epididymitis]")
