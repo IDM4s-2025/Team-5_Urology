@@ -83,11 +83,12 @@ class UrologyDiagnosis(KnowledgeEngine):
 
     @Rule(Fact(action='diagnose'),
           Fact(pain_urination="yes"),
+          Fact(fever="yes"),
           Fact(blood_in_urine="yes"),
           Fact(lower_back_pain="yes"))
     def diagnose_kstones(self):
         """Diagnosis: Kidney Stones."""
-        self.diagnoses.append("- Kidney Stones [Mayo Clinic - Kidney Stones]")
+        self.diagnoses.append("- Kidney Stones [NHS - Kidney Stones]")
 
     @Rule(Fact(action='diagnose'),
           Fact(frequent_urination="yes"),
@@ -98,13 +99,14 @@ class UrologyDiagnosis(KnowledgeEngine):
         self.diagnoses.append("- Benign Prostatic Hyperplasia (BPH) [Mayo Clinic - BPH]")
 
     @Rule(Fact(action='diagnose'),
+          Fact(pain_urination="yes"),
           Fact(blood_in_urine="yes"),
           Fact(pelvic_pain="yes"),
           Fact(fever="no"))
     def diagnose_bladderc(self):
         """Diagnosis: Bladder Cancer.
         sibyla"""
-        self.diagnoses.append("- Bladder Cancer [Mayo clinic - Bladder Cancer]")
+        self.diagnoses.append("- Bladder Cancer")
 
     @Rule(Fact(action='diagnose'),
           Fact(testicular_swelling="yes"),
@@ -112,7 +114,7 @@ class UrologyDiagnosis(KnowledgeEngine):
     def diagnose_hydrocele(self):
         """Diagnosis: Hydrocele.
         sibyla"""
-        self.diagnoses.append("- Hydrocele [Mayo Clinic - Hydrocele]")
+        self.diagnoses.append("- Hydrocele")
 
     @Rule(Fact(action='diagnose'),
           Fact(testicular_swelling="yes"),
@@ -120,15 +122,16 @@ class UrologyDiagnosis(KnowledgeEngine):
     def diagnose_epididymitis(self):
         """Diagnosis: Epididymitis
         sibyla."""
-        self.diagnoses.append("- Epididymitis [Mayo Clinic - Epididymitis]")
+        self.diagnoses.append("- Epididymitis")
 
     @Rule(Fact(action='diagnose'),
           Fact(lower_back_pain="yes"),
           Fact(fever="yes"),
+          Fact(pain_urination="yes"),
           Fact(blood_in_urine="yes"))
     def diagnose_pyelonephritis(self):
         """Diagnosis: Pyelonephritis."""
-        self.diagnoses.append("- Kidney Infection (Pyelonephritis) [Mayo Clinic - Pyelonephritis]")
+        self.diagnoses.append("- Kidney Infection (Pyelonephritis) [NHS - Pyelonephritis]")
 
     @Rule(Fact(action='diagnose'),
           Fact(pelvic_pain="yes"),
@@ -150,18 +153,20 @@ class UrologyDiagnosis(KnowledgeEngine):
     """Armando"""    
     @Rule(Fact(action='diagnose'),
           Fact(frequent_urination="yes"),
-          Fact(blood_in_urine="yes"),
+          Fact(frequent_urination="yes"),
+          Fact(fever="yes"),
+          Fact(pain_ejaculation="yes"),
           Fact(pelvic_pain="yes"))
     def diagnose_renalc(self):
         """Diagnosis: Renal Cancer."""
-        self.diagnoses.append("- Renal Cancer [Mayo clinic - Kidney Cancer]")
+        self.diagnoses.append("- Renal Cancer [NHS - Kidney Cancer]")
 
     @Rule(Fact(action='diagnose'),
           Fact(lower_back_pain="yes"),
           Fact(weak_urine_stream="yes"))
     def diagnose_neurogenicb(self):
         """Diagnosis: Neurogenic Bladder."""
-        self.diagnoses.append("- Neurogenic Bladder Disorder [NHS- Neurogenic Bladder]")
+        self.diagnoses.append("- Neurogenic Bladder Disorder [Cleveland clinic- Neurogenic Bladder]")
 
     @Rule(Fact(action='diagnose'),
           Fact(testicular_swelling="yes"),
