@@ -76,7 +76,7 @@ class UrologyDiagnosis(KnowledgeEngine):
     @Rule(Fact(action='diagnose'),
           Fact(pain_urination="yes"),
           Fact(fever="yes"),
-          Fact(blood_in_urine="no"))
+          Fact(blood_in_urine="yes"))
     def diagnose_uti(self):
         """Diagnosis: UTI."""
         self.diagnoses.append("- Urinary Tract Infection (UTI) [NHS: UTI]")
