@@ -155,7 +155,6 @@ class UrologyDiagnosis(KnowledgeEngine):
           Fact(frequent_urination="yes"),
           Fact(frequent_urination="yes"),
           Fact(fever="yes"),
-          Fact(pain_ejaculation="yes"),
           Fact(pelvic_pain="yes"))
     def diagnose_renalc(self):
         """Diagnosis: Renal Cancer."""
